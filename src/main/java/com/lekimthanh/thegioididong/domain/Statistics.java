@@ -1,18 +1,25 @@
 package com.lekimthanh.thegioididong.domain;
 
+import java.io.Serializable;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@SuppressWarnings("serial")
 @Data
 @Entity
 @Table(name = "statistic")
-public class Statistics {
+@NoArgsConstructor
+@AllArgsConstructor
+public class Statistics implements Serializable{
     @Id
-    private int id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "OrderId")
@@ -22,7 +29,7 @@ public class Statistics {
     @JoinColumn(name = "OrderDetailId")
     private OrderDetail OrderDetail;
 
-    private long orders;
+    private Long orders;
 
-    private long revenues;
+    private Long revenues;
 }

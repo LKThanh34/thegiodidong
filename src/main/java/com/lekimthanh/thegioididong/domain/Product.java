@@ -1,7 +1,10 @@
 package com.lekimthanh.thegioididong.domain;
 
+
+import java.io.Serializable;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -21,7 +24,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name = "products")
-public class Product {
+public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long productId;
@@ -45,9 +48,11 @@ public class Product {
     @JoinColumn(name = "categoryId")
     private Category category;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private List<OrderDetail> orderDetails;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "product")
     List<Comment> comments;
 
