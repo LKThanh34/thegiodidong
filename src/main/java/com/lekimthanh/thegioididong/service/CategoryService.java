@@ -10,49 +10,18 @@ import com.lekimthanh.thegioididong.domain.Category;
 
 public interface CategoryService {
 
-    <S extends Category> S save(S entity);
-
-
     List<Category> findAll();
-
-    Page<Category> findAll(Pageable pageable);
 
     Optional<Category> findById(Long id);
 
-    Category getById(Long id);
+    void deleteById(Long CategoryId);
 
-    Category getOne(Long id);
-
-    Category getReferenceById(Long id);
-
-    List<Category> findAllById(Iterable<Long> ids);
+    <S extends Category> S save(S entity);
 
     Page<Category> findByNameContaining(String name, Pageable pageable);
 
-    long count();
+    Page<Category> findAll(Pageable pageable);
 
+    // Đếm số lượng danh mục theo tên
     long countByNameContaining(String name);
-
-    boolean existsById(Long id);
-
-    // delete
-
-    void delete(Category entity);
-
-    void deleteById(Long categoryId);
-
-    void deleteAll();
-
-    void deleteAll(Iterable<? extends Category> entities);
-
-    void deleteAllById(Iterable<? extends Long> ids);
-
-    void deleteInBatch(Iterable<Category> entities);
-
-    void deleteAllInBatch();
-
-    void deleteAllInBatch(Iterable<Category> entities);
-
-    void deleteAllByIdInBatch(Iterable<Long> ids);
-
 }
